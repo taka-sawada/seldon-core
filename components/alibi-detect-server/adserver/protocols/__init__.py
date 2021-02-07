@@ -6,6 +6,7 @@ class Protocol(Enum):
     seldon_http = "seldon.http"
     seldonfeedback_http = "seldonfeedback.http"
     kfserving_http = "kfserving.http"
+    onnx_http = "onnx.http"
 
     def __str__(self):
         return self.value

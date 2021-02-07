@@ -15,6 +15,7 @@ from adserver.protocols.seldon_http import SeldonRequestHandler
 from adserver.protocols.seldonfeedback_http import SeldonFeedbackRequestHandler
 from adserver.protocols.tensorflow_http import TensorflowRequestHandler
 from adserver.protocols.v2 import KFservingV2RequestHandler
+from adserver.protocols.onnx_http import OnnxRequestHandler
 from cloudevents.sdk import converters
 from cloudevents.sdk import marshaller
 from cloudevents.sdk.event import v1
@@ -146,6 +147,8 @@ def get_request_handler(protocol, request: Dict) -> RequestHandler:
         return SeldonFeedbackRequestHandler(request)
     elif protocol == Protocol.kfserving_http:
         return KFservingV2RequestHandler(request)
+    elif protocol == Protocol.onnx_http:
+        return OnnxRequestHandler(request)
 
 
 def sendCloudEvent(event: v1.Event, url: str):
